@@ -1,8 +1,8 @@
 101 ICON "defter.ico"
 
 1 VERSIONINFO
-FILEVERSION 1,3,2,0
-PRODUCTVERSION 1,3,2,0
+FILEVERSION 1,3,3,0
+PRODUCTVERSION 1,3,3,0
 FILEOS 0x40004
 FILETYPE 0x1
 BEGIN
@@ -11,11 +11,11 @@ BEGIN
     BLOCK "041F04B0"
     BEGIN
       VALUE "FileDescription", "Defter"
-      VALUE "FileVersion", "1.3.2"
+      VALUE "FileVersion", "1.3.3"
       VALUE "InternalName", "Defter"
       VALUE "OriginalFilename", "Defter.exe"
       VALUE "ProductName", "Defter"
-      VALUE "ProductVersion", "1.3.2"
+      VALUE "ProductVersion", "1.3.3"
     END
   END
   BLOCK "VarFileInfo"

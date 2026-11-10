@@ -244,11 +244,11 @@ LRESULT CALLBACK editProc(HWND edit, UINT message, WPARAM w, LPARAM l, UINT_PTR 
         return 0;
     }
     if (message == WM_NCDESTROY) RemoveWindowSubclass(edit, editProc, id);
-    const bool textInput = message == WM_CHAR || message == WM_SYSCHAR || message == WM_UNICHAR
-        || message == WM_IME_CHAR || message == WM_IME_COMPOSITION;
-    const HCURSOR pointer = textInput ? GetCursor() : nullptr;
+    const bool keyboardInput = message >= WM_KEYFIRST && message <= WM_KEYLAST;
+    const bool compositionInput = message == WM_IME_CHAR || message == WM_IME_COMPOSITION;
+    const HCURSOR pointer = keyboardInput || compositionInput ? GetCursor() : nullptr;
     const LRESULT result = DefSubclassProc(edit, message, w, l);
-    // Windows edit controls can clear the mouse pointer while processing text input.
+    // Windows edit controls can clear the mouse pointer while processing keys, including Backspace.
     if (pointer && !GetCursor()) SetCursor(pointer);
     if (id >= 3 && message == WM_PAINT && !app.changing && GetWindowTextLengthW(edit) == 0) {
         const wchar_t* hint = id == 3 ? L"Yazmaya başla veya / yazıp Enter’a bas…"
